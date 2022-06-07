@@ -1,0 +1,12 @@
+;time;token;event;nodeName;nodeType;global_position;local_position;local_dimensions
+0;2022-01-20 13:22:34.432000+00:00;fEnrhGWVISKhILFB;click;DIV;;[1291, 376];['', ''];['', '']
+1;2022-01-20 13:22:34.670000+00:00;fEnrhGWVISKhILFB;click;BUTTON;;[1328, 359];[35, 19];[104, 36]
+2;2022-01-20 13:22:43.333000+00:00;fEnrhGWVISKhILFB;click;INPUT;checkbox;[156, 286];[10, 6];[14, 14]
+3;2022-01-20 13:22:45.090000+00:00;fEnrhGWVISKhILFB;click;INPUT;checkbox;[152, 287];[6, 6];[14, 14]
+4;2022-01-20 13:22:45.871000+00:00;fEnrhGWVISKhILFB;click;INPUT;checkbox;[146, 264];[1, 9];[14, 14]
+5;2022-01-20 13:22:51.465000+00:00;fEnrhGWVISKhILFB;click;BUTTON;;[1448, 677];[133, 11];[192, 36]
+6;2022-01-20 13:23:04.058000+00:00;fEnrhGWVISKhILFB;click;P;;[168, 440];['', ''];['', '']
+7;2022-01-20 13:23:04.215000+00:00;fEnrhGWVISKhILFB;click;P;;[168, 440];['', ''];['', '']
+8;2022-01-20 13:23:05.267000+00:00;fEnrhGWVISKhILFB;click;P;;[259, 429];['', ''];['', '']
+9;2022-01-20 13:25:01.806000+00:00;fEnrhGWVISKhILFB;click;INPUT;checkbox;[154, 497];[9, 6];[14, 14]
+10;2022-01-20 13:25:03.981000+00:00;fEnrhGWVISKhILFB;click;INPUT;checkbox;[157, 472];[12, 8];[14, 14]

@@ -1,0 +1,8 @@
+;time;token;event;nodeName;nodeType;global_position;local_position;local_dimensions
+0;2022-01-20 12:53:02.044000+00:00;oVpdC4Z8XfhYwlaC;click;H1;;[549, 252];['', ''];['', '']
+1;2022-01-20 12:53:02.182000+00:00;oVpdC4Z8XfhYwlaC;click;H1;;[549, 252];['', ''];['', '']
+2;2022-01-20 12:53:12.177000+00:00;oVpdC4Z8XfhYwlaC;click;BUTTON;;[1119, 351];[41, 11];[105, 36]
+3;2022-01-20 12:53:14.197000+00:00;oVpdC4Z8XfhYwlaC;click;BUTTON;;[1131, 355];[53, 15];[105, 36]
+4;2022-01-20 12:53:14.351000+00:00;oVpdC4Z8XfhYwlaC;click;BUTTON;;[1131, 355];[53, 15];[105, 36]
+5;2022-01-20 12:53:14.501000+00:00;oVpdC4Z8XfhYwlaC;click;BUTTON;;[1129, 355];[51, 15];[105, 36]
+6;2022-01-20 12:53:15.600000+00:00;oVpdC4Z8XfhYwlaC;click;H1;;[608, 265];['', ''];['', '']

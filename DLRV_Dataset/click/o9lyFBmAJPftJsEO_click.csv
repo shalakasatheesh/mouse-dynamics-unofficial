@@ -1,0 +1,4 @@
+;time;token;event;nodeName;nodeType;global_position;local_position;local_dimensions
+0;2022-01-12 19:03:45.050000+00:00;o9lyFBmAJPftJsEO;click;BUTTON;;[897, 352];[19, 29];[36, 107]
+1;2022-01-12 19:03:54.117000+00:00;o9lyFBmAJPftJsEO;click;BUTTON;;[971, 914];[112, 13];[36, 188]
+2;2022-01-12 19:04:04.569000+00:00;o9lyFBmAJPftJsEO;click;BUTTON;;[954, 917];[0, 0];[0, 0]

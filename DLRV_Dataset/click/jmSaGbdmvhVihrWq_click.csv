@@ -1,0 +1,16 @@
+;time;token;event;nodeName;global_position;local_position;local_dimensions;nodeType
+0;2022-01-12 18:41:06.715000+00:00;jmSaGbdmvhVihrWq;click;DIV;[910, 352];['', ''];['', ''];
+1;2022-01-12 18:44:34.102000+00:00;jmSaGbdmvhVihrWq;click;LABEL;[223, 296];[121, 18];[24, 195];
+2;2022-01-12 18:44:34.112000+00:00;jmSaGbdmvhVihrWq;click;INPUT;[223, 296];[144, 13];[14, 14];radio
+3;2022-01-12 18:44:34.971000+00:00;jmSaGbdmvhVihrWq;click;LABEL;[198, 321];[96, 17];[24, 186];
+4;2022-01-12 18:44:34.978000+00:00;jmSaGbdmvhVihrWq;click;INPUT;[198, 321];[119, 12];[14, 14];radio
+5;2022-01-12 18:44:35.907000+00:00;jmSaGbdmvhVihrWq;click;LABEL;[173, 342];[71, 12];[24, 97];
+6;2022-01-12 18:44:35.915000+00:00;jmSaGbdmvhVihrWq;click;INPUT;[173, 342];[94, 7];[14, 14];radio
+7;2022-01-12 18:44:36.810000+00:00;jmSaGbdmvhVihrWq;click;LABEL;[164, 370];[62, 14];[24, 131];
+8;2022-01-12 18:44:36.818000+00:00;jmSaGbdmvhVihrWq;click;INPUT;[164, 370];[85, 9];[14, 14];radio
+9;2022-01-12 18:44:37.613000+00:00;jmSaGbdmvhVihrWq;click;LABEL;[125, 401];[23, 19];[24, 43];
+10;2022-01-12 18:44:37.622000+00:00;jmSaGbdmvhVihrWq;click;INPUT;[125, 401];[46, 14];[14, 14];radio
+11;2022-01-12 18:44:38.432000+00:00;jmSaGbdmvhVihrWq;click;LABEL;[120, 424];[18, 16];[24, 98];
+12;2022-01-12 18:44:38.441000+00:00;jmSaGbdmvhVihrWq;click;INPUT;[120, 424];[41, 11];[14, 14];radio
+13;2022-01-12 18:44:42.599000+00:00;jmSaGbdmvhVihrWq;click;DIV;[889, 906];['', ''];['', ''];
+14;2022-01-12 18:56:43.844000+00:00;jmSaGbdmvhVihrWq;click;NULL;[1017, 854];['', ''];['', ''];

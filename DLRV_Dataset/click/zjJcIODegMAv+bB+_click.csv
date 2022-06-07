@@ -1,0 +1,13 @@
+;time;token;event;nodeName;nodeType;global_position;local_position;local_dimensions
+0;2022-01-20 13:21:48.184000+00:00;zjJcIODegMAv+bB+;click;BUTTON;;[1368, 348];[75, 8];[104, 36]
+1;2022-01-20 13:22:00.475000+00:00;zjJcIODegMAv+bB+;click;INPUT;checkbox;[150, 361];[5, 15];[14, 14]
+2;2022-01-20 13:22:17.978000+00:00;zjJcIODegMAv+bB+;click;LABEL;;[176, 399];[7, 6];[506, 24]
+3;2022-01-20 13:22:17.979000+00:00;zjJcIODegMAv+bB+;click;INPUT;checkbox;[176, 399];[30, 1];[14, 14]
+4;2022-01-20 13:22:18.489000+00:00;zjJcIODegMAv+bB+;click;DIV;;[160, 385];['', ''];['', '']
+5;2022-01-20 13:22:18.906000+00:00;zjJcIODegMAv+bB+;click;LI;;[160, 421];['', ''];['', '']
+6;2022-01-20 13:22:19.194000+00:00;zjJcIODegMAv+bB+;click;INPUT;checkbox;[154, 411];[9, 13];[14, 14]
+7;2022-01-20 13:22:20.016000+00:00;zjJcIODegMAv+bB+;click;INPUT;checkbox;[158, 379];[13, 7];[14, 14]
+8;2022-01-20 13:22:22.507000+00:00;zjJcIODegMAv+bB+;click;INPUT;checkbox;[154, 374];[9, 2];[14, 14]
+9;2022-01-20 13:22:24.633000+00:00;zjJcIODegMAv+bB+;click;NULL;;[1430, 599];['', ''];['', '']
+10;2022-01-20 13:22:25.719000+00:00;zjJcIODegMAv+bB+;click;HTML;;[1472, 709];['', ''];['', '']
+11;2022-01-20 13:22:25.993000+00:00;zjJcIODegMAv+bB+;click;BUTTON;;[1458, 688];[142, 22];[192, 36]
