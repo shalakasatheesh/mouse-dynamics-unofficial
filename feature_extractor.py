@@ -18,7 +18,6 @@ class FeatureExtractor(torch.nn.Module):
 
         self.gap = torch.nn.AdaptiveAvgPool1d(num_classes)
         self.fc7 = torch.nn.Linear(num_classes, num_classes)
-        self.soft = torch.nn.Softmax(dim=1)
 
     def forward(self, input):
         x = self.fc1(input)
@@ -36,4 +35,4 @@ class FeatureExtractor(torch.nn.Module):
         x = self.gap(x)
         x = x.mean(1)
         x = self.fc7(x)
-        return self.soft(x)
+        return F.softmax(x, dim=1)

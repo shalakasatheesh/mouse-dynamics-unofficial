@@ -6,8 +6,10 @@ import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
 from torchsummary import summary
 
-dataset = MoveDataset(pickle_file='move_data.pkl', transform=Normalize())
-loader = DataLoader(dataset, batch_size=8, shuffle=True)
+#dataset = MoveDataset(pickle_file='move_data.pkl', transform=Normalize())
+dataset = MoveDataset(pickle_file='test.pkl')
+#dataset.save_as_pickle('test.pkl')
+loader = DataLoader(dataset, batch_size=2, shuffle=True)
 writer = SummaryWriter()
 
 model = FeatureExtractor(2, dataset.unique_user_count(), 128)
