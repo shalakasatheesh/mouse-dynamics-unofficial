@@ -6,7 +6,9 @@ import os
 import pandas as pd
 import torch
 import re
+import numpy as np
 import torch.nn.functional as F
+
 
 class MoveData:
 
@@ -40,6 +42,14 @@ class MoveDataset(Dataset):
         self.assign_user_ids()
         self.transform = transform
 
+    def train_data(self):
+        X = np.empty(shape=(len(self), 128, 2))
+        labels = np.zeros(shape=(len(self), self.unique_user_count()))
+        for idx, (x, y) in enumerate(self):
+            X[idx] = x.numpy()
+            labels[idx, y] = 1.0
+        return X, labels
+
     def assign_user_ids(self):
         counter = 0
         for t in set([d.token for d in self.block_data]):
@@ -60,7 +70,7 @@ class MoveDataset(Dataset):
         if self.transform:
             t = self.transform(t)
 
-        return torch.transpose(t, 0, 1), self.user_ids[move_block.token]
+        return t, self.user_ids[move_block.token]
 
     def __len__(self):
         return len(self.block_data)
@@ -97,7 +107,7 @@ class MoveDataset(Dataset):
                 for _ in range(128 - len(remaining)):
                     remaining.append(remaining[-1])
 
-            if length >= 8:
+            if length == 128:
                 block_data.append(self.generate_dx_dy(token, remaining))
             current_idx += length + 1
 
@@ -125,17 +135,22 @@ class MoveDataset(Dataset):
 class Normalize(object):
 
     def __call__(self, sample):
-        #dx_col = sample[:, 0]
-        #dy_col = sample[:, 1]
-##
-        # Normalize the dx values
- #       std = torch.std(dx_col)
- #       mean = torch.mean(dx_col)
- #       sample[:, 0] = (dx_col - mean) / std
-#
-#        # Normalize the dy values
-#        std = torch.std(dy_col)
-#        mean = torch.mean(dy_col)
-#        sample[:, 1] = (dy_col - mean) / std
+        dx_col = sample[:, 0]
+        dy_col = sample[:, 1]
 
-        return F.normalize(sample)
+        # Normalize the dx values
+        std = torch.std(dx_col)
+        if std == 0:
+            std = 0.0001
+        mean = torch.mean(dx_col)
+        sample[:, 0] = (dx_col - mean) / std
+
+        # Normalize the dy values
+        std = torch.std(dy_col)
+        if std == 0:
+            std = 0.0001
+        mean = torch.mean(dy_col)
+        sample[:, 1] = (dy_col - mean) / std
+
+        return sample
+        # return F.normalize(sample)
