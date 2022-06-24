@@ -7,8 +7,8 @@ from torch.utils.tensorboard import SummaryWriter
 from torchsummary import summary
 
 #dataset = MoveDataset(pickle_file='move_data.pkl', transform=Normalize())
-dataset = MoveDataset(pickle_file='test.pkl')
-#dataset.save_as_pickle('test.pkl')
+dataset = MoveDataset(pickle_file='move_data.pkl')
+#dataset.save_as_pickle('move_data.pkl')
 loader = DataLoader(dataset, batch_size=2, shuffle=True)
 writer = SummaryWriter()
 
