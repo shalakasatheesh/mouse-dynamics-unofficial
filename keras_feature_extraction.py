@@ -1,45 +1,58 @@
 from time import time
-
 from move_dataset import MoveDataset
-
-from torch.utils.data import DataLoader
+import argparse
 from keras_fcn import build_fcn
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 import numpy as np
 import tensorflow as tf
 from tensorflow.python.keras.callbacks import TensorBoard
-from sklearn import metrics
 
-dataset = MoveDataset(pickle_file='move_data.pkl')
-loader = DataLoader(dataset, batch_size=2, shuffle=True)
-tensorboard = TensorBoard(log_dir='logs/{}'.format(time()))
 
-X, y = dataset.train_data()
-X = preprocessing.StandardScaler().fit_transform(X.reshape(-1, 256)).reshape(-1, 128, 2)
+def main():
+    # Extract arguments from command line
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset", type=str, default="move_data.pkl")
+    parser.add_argument("--model", type=str, default="model.h5")
+    parser.add_argument("--batch", type=int, default=512)
+    parser.add_argument('--learning_rate', type=float, default=0.0001)
+    parser.add_argument("--epochs", type=int, default=200)
+    parser.add_argument("--verbose", type=bool, default=True)
+    parser.add_argument("--tensorboard", type=bool, default=True)
+    args = parser.parse_args()
 
-cb, model = build_fcn((128, 2), dataset.unique_user_count(), 128, tensorboard)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=11235)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=11235)
+    dataset = MoveDataset(pickle_file=args.dataset)
+    if args.tensorboard:
+        tensorboard = TensorBoard(log_dir='logs/{}'.format(time()))
+    else:
+        tensorboard = None
 
-mini_batch_size = int(min(X_train.shape[0] / 10, 512))
-X_train = np.asarray(X_train).astype(np.float32)
-X_val = np.asarray(X_val).astype(np.float32)
+    X, y = dataset.train_data()
+    X = preprocessing.StandardScaler().fit_transform(X.reshape(-1, 256)).reshape(-1, 128, 2)
 
-train_ds = tf.data.Dataset.from_tensor_slices((X_train, y_train))
-val_ds = tf.data.Dataset.from_tensor_slices((X_val, y_val))
+    cb, model = build_fcn((128, 2), dataset.unique_user_count(), 128, tb=tensorboard,
+                          learning_rate=args.learning_rate,
+                          model_path=args.model, verbose=args.verbose)
+    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=11235)
 
-train_ds = train_ds.shuffle(100).batch(512)
-val_ds = val_ds.batch(512)
+    mini_batch_size = int(min(X_train.shape[0] / 10, args.batch))
+    X_train = np.asarray(X_train).astype(np.float32)
+    X_val = np.asarray(X_val).astype(np.float32)
 
-hist = model.fit(train_ds,
-                 epochs=200,
-                 verbose=True,
-                 validation_data=val_ds,
-                 callbacks=cb)
+    train_ds = tf.data.Dataset.from_tensor_slices((X_train, y_train))
+    val_ds = tf.data.Dataset.from_tensor_slices((X_val, y_val))
 
-X_test = np.asarray(X_test).astype(np.float32)
-y_true = np.argmax(y_test, axis=1)
-y_pred = np.argmax(model.predict(X_test), axis=1)
-accuracy = metrics.accuracy_score(y_true, y_pred)
-print("Test accuracy: " + str(accuracy))
+    train_ds = train_ds.shuffle(2 * mini_batch_size).batch(mini_batch_size)
+    val_ds = val_ds.batch(mini_batch_size)
+
+    model.fit(train_ds,
+              epochs=args.epochs,
+              verbose=args.verbose,
+              validation_data=val_ds,
+              callbacks=cb)
+
+    model.save('final_' + args.model)
+
+
+if __name__ == "__main__":
+    main()

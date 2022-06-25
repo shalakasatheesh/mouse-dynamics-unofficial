@@ -56,6 +56,24 @@ class MoveDataset(Dataset):
             self.user_ids[t] = counter
             counter += 1
 
+    def get_data_for_userid(self, userid):
+        block_data = [d for d in self.block_data if self.user_ids[d.token] == userid]
+        X = np.empty(shape=(len(block_data), 128, 2))
+        labels = np.zeros(shape=(len(block_data), self.unique_user_count()))
+        for idx, (x, y) in enumerate(block_data):
+            X[idx] = x.numpy()
+            labels[idx, y] = 1.0
+        return X, labels
+
+    def get_data_except_userid(self, userid):
+        block_data = [d for d in self.block_data if self.user_ids[d.token] != userid]
+        X = np.empty(shape=(len(block_data), 128, 2))
+        labels = np.zeros(shape=(len(block_data), self.unique_user_count()))
+        for idx, (x, y) in enumerate(block_data):
+            X[idx] = x.numpy()
+            labels[idx, y] = 1.0
+        return X, labels
+
     def unique_user_count(self):
         return len(self.user_ids)
 

@@ -1,7 +1,7 @@
 import tensorflow.keras as keras
 
 
-def build_fcn(input_shape, nb_classes, num_filters=128, tesorboard=None):
+def build_fcn(input_shape, nb_classes, num_filters=128, learning_rate=0.0001, model_path='model.h5', verbose=True, tb=None):
     input_layer = keras.layers.Input(input_shape)
 
     # conv1 = keras.layers.Conv1D(filters=128, kernel_size=8, padding='same')(input_layer)
@@ -23,17 +23,15 @@ def build_fcn(input_shape, nb_classes, num_filters=128, tesorboard=None):
     output_layer = keras.layers.Dense(nb_classes, activation='softmax')(gap_layer)
     model = keras.models.Model(inputs=input_layer, outputs=output_layer)
     model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.Adam(), metrics=['categorical_accuracy'])
-    learning_rate = 0.00005
     reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='val_categorical_accuracy', factor=0.5, patience=50,
                                                   min_lr=learning_rate)
 
-    model_checkpoint = keras.callbacks.ModelCheckpoint(filepath='model.h5', monitor='val_categorical_accuracy', save_best_only=True,
-                                                       verbose=1)
-    # early_stopping = keras.callbacks.EarlyStopping(monitor='loss', patience=10)
+    model_checkpoint = keras.callbacks.ModelCheckpoint(filepath=model_path, monitor='val_categorical_accuracy',
+                                                       save_best_only=True,
+                                                       verbose=verbose)
 
-    # callbacks = [reduce_lr,model_checkpoint, early_stopping]
     callbacks = [reduce_lr, model_checkpoint]
-    if tesorboard is not None:
-        callbacks.append(tesorboard)
+    if tb is not None:
+        callbacks.append(tb)
 
     return callbacks, model
