@@ -1,3 +1,4 @@
+import numpy as np
 import torch
 import torch.nn.functional as F
 
@@ -8,6 +9,7 @@ class FeatureExtractor(torch.nn.Module):
         super(FeatureExtractor, self).__init__()
 
         self.fc1 = torch.nn.Conv1d(in_channels=num_features, out_channels=num_filters, kernel_size=8, padding='same')
+        print(num_features, num_filters)
         self.fc2 = torch.nn.BatchNorm1d(num_filters)
 
         self.fc3 = torch.nn.Conv1d(num_filters, 2 * num_filters, kernel_size=5, padding='same')

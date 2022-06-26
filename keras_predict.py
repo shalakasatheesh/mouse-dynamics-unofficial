@@ -58,7 +58,7 @@ def score_normalization(positive_scores, negative_scores):
 if __name__ == "__main__":
     # Extract parameters from command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, default="model_trained.h5")
+    parser.add_argument("--model", type=str, default="model.h5")
     args = parser.parse_args()
 
     model = truncate_model(tf.keras.models.load_model(args.model))

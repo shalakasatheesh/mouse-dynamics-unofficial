@@ -16,7 +16,7 @@ def main():
     parser.add_argument("--model", type=str, default="model.h5")
     parser.add_argument("--batch", type=int, default=512)
     parser.add_argument('--learning_rate', type=float, default=0.0001)
-    parser.add_argument("--epochs", type=int, default=200)
+    parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--verbose", type=bool, default=True)
     parser.add_argument("--tensorboard", type=bool, default=True)
     args = parser.parse_args()
